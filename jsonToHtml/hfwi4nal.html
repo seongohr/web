@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HW4</title>
+        <style>
+            body {
+                text-align: center;
+            }
+
+            .wrapper {
+                position: absolute;
+                top:30%;
+                left: 15%;
+                right : 15%;
+            }
+        </style>
+        <script>
+            function viewJson(fileName) {
+                function loadJSON(url) {
+                    xmlhttp=new XMLHttpRequest();
+                    // xmlhttp.open("GET", url,false);
+                    // xmlhttp.send();
+                    
+                    ////error1 handling : no file
+                    try {
+                        xmlhttp.open("GET", url,false);
+                        xmlhttp.send();
+                    }
+                    catch(error1) {
+                        throw("File does not exist!");
+                    }
+                    jsonObj=JSON.parse(xmlhttp.responseText);
+                    return jsonObj;
+                    
+                    
+                }
+                //errors handling
+                try {
+                    var URL = fileName.URL.value;
+                    // error1 (No file )
+                    if (URL.trim() ==""){
+                        throw("File does not exist!");
+                    }
+                    jsonObj = loadJSON(URL);
+                    jsonObj.onload=generateHTML(jsonObj);
+                    hWin = window.open("", "Assignment4", "height=1000, width=1200");
+                    hWin.document.write(html_text);
+                    hWin.document.close();
+                }
+                catch(message) {
+                    alert(message);
+                }
+                
+            }
+
+            function generateHTML(jsonObj) {
+                root=jsonObj.DocumentElement;
+                html_text="<html><head><title>JSON Parse Result</title></head><body>";
+                html_text+="<table border='2'>";
+                cars = jsonObj.Mainline.Table.Header.Data
+                html_text+="<tbody>";
+                html_text+="<tr>";
+                x=250;y=250;
+
+                //output the headers
+                for(i=0;i<cars.length;i++) {
+                    header = cars[i];
+                    html_text+="<th>"+header+"</th>";
+                }
+                html_text+="</tr>";
+
+                //output the data
+                //error2 handling : no car manufacturer
+                try {
+                    cars_data = jsonObj.Mainline.Table.Row;
+                    var cars_data_keys = Object.keys(cars_data[0]);
+                }
+                catch(error2) {
+                    throw("No car manufacturer!");
+                }
+
+                for(i=0; i<cars_data.length;i++) {
+                    carsList = cars_data[i];
+                    html_text+="<tr>";
+                    for(j=0; j<cars_data_keys.length;j++) {
+                        one_key = cars_data_keys[j];
+                        var contents = "";
+                        if (one_key == "Hubs") {
+                            var hub_data = carsList[one_key].Hub;
+                            contents += "<ul>";
+                            for(k=0;k<hub_data.length;k++) {
+                                if (k==0) {
+                                    contents += "<li><b>"+hub_data[k] + "</b></li>";
+                                }
+                                else {
+                                    contents += "<li>"+hub_data[k] + "</li>";
+                                }
+                            }
+                            contents += "</ul>";
+                        }
+                        else {
+                            contents = carsList[one_key];
+                            if (one_key == "HomePage") {
+                                contents = "<a href='" + contents + "'>"+contents+"</a>";
+                            }
+                            if (one_key == "Logo") {
+                                contents = "<img src='" + contents + "'width='"+x+"'height='" + y+"'>";
+                            }
+                        }
+                        html_text += "<td>" + contents + "</td>";
+                    }
+                    html_text+="</tr>";
+                }
+                html_text+="</tbody>";
+                html_text+="</table>";
+                html_text+="</bo" + "dy></html>";
+            } 
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Enter URL for the largest manufacturers by production (2017) List JSON File</h1>
+            <form name='myform' method="POST">       
+                <input type="text" name="URL" style="width:200px; height:20px;"/>
+                </br>
+                <p><input type="button" name='submit' value="Submit Query" onclick="viewJson(this.form)" style="height:15; width: 120px; background-color:lightgrey;"/></p>
+            </form>
+        </div>
+    </body>
+</html>
