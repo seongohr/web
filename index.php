@@ -161,10 +161,10 @@
             return "Very Lignt";
         }
         elseif ($value <= 0.05) {
-            return "Very Lignt";
+            return "Lignt";
         }
         elseif ($value <= 0.1) {
-            return "Very Lignt";
+            return "Moderate";
         }
         elseif ($value > 0.1) {
             return "Heavy";
