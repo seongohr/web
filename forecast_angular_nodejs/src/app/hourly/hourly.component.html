@@ -1,0 +1,26 @@
+<div class="container" id="hour_container">
+    <div id="select_container">
+        <select class="form-control-sm" (change)="changeData($event)">
+            <option 
+                *ngFor="let opt of options"
+                [value]="opt.id"
+            >
+                {{ opt.name }}
+            </option>
+        </select>
+    </div>
+    <div *ngIf="showChart" class="container">
+        <div style="display: block">
+            <canvas baseChart #baseChart="base-chart"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [colors]="chartColors"
+            >
+            </canvas>
+        </div>
+    </div>
+</div>
+    

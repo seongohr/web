@@ -1,0 +1,25 @@
+.ButtonGroup {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .ButtonTwitter {
+    background-image: url('https://csci571.com/hw/hw8/Images/Twitter.png');
+    background-size: 38px;
+    height: 38px;
+    width: 38px;
+  }
+
+  .ButtonStar {
+    color: #d2cd26;
+  }
+
+  .ButtonStar > i {
+    cursor: pointer;
+  }
+
+  #result_containter {
+    margin-top: 5%;
+  }

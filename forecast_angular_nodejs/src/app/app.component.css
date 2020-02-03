@@ -1,0 +1,14 @@
+#container {
+    margin-top: 2rem;
+    background-color: green;
+    color : white;
+}
+
+
+#star {
+    color: red;
+}
+
+#text_error_msg {
+    color: red;
+}
