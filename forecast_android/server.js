@@ -20,7 +20,7 @@ app.use(express.static('dist/forecast'));
 
 app.get('/googleLocation', function(req, res){
     var baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address='
-    var key = '&key=AIzaSyALy-evwcpb12Fn6zv9Z1d1O7y4YcU9mM8';
+    var key = '&key=***';
     var address = req.query.address;
     var url = baseUrl + address + key;
     console.log('geocode URL', url);
@@ -34,7 +34,7 @@ app.get('/googleLocation', function(req, res){
 
 app.get('/darkLocation', function(req, res){
     var baseUrl = 'https://api.darksky.net/forecast/'
-    var key = '10d7cb18d4b85ab9db2fa9593b5e35d2/';
+    var key = '***/';
     var location = req.query.location;
     var url = baseUrl + key + location;
     console.log('darksky URL', url);
@@ -52,7 +52,7 @@ app.get('/customLocation', function(req, res) {
     var baseUrl1 = 'https://www.googleapis.com/customsearch/v1?q=seal%20of%20';
     var baseUrl2 = '&imgSize=large&imgType=news&num=1&searchType=image';
     var searchEngineId = '&cx=008209479974289058794:oma8ambfrms';
-    var key = '&key=AIzaSyDc7c-QCQ-fS8LfGAbY169Js-czqPQtKPc';
+    var key = '&key=***';
     var state = req.query.state;
     var url = baseUrl1 + state + searchEngineId + baseUrl2 + key;
     console.log('custom url', url);
@@ -65,7 +65,7 @@ app.get('/customLocation', function(req, res) {
 app.get('/darkDailyLocation', function(req, res) {
     console.warn('received the daily weather call request');
     const baseurl1 = 'https://api.darksky.net/forecast/';
-    const key = '10d7cb18d4b85ab9db2fa9593b5e35d2/';
+    const key = '***/';
     var address = req.query.address;
     var url = baseurl1 + key + address;
     console.log('darkDaily url in server', url);
@@ -77,7 +77,7 @@ app.get('/darkDailyLocation', function(req, res) {
 
 app.get('/cityLocation', function (req, res) {
     const baseurl1 = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?types=(cities)&language=en';
-    const key = '&key=AIzaSyDc7c-QCQ-fS8LfGAbY169Js-czqPQtKPc';
+    const key = '&key=***';
     const baseurl2 = '&input=';
     var city = req.query.city;
     var url = baseurl1 + key + baseurl2 +city;
@@ -92,7 +92,7 @@ app.get('/customLocationApp', function(req, res) {
     var baseUrl1 = 'https://www.googleapis.com/customsearch/v1?q=';
     var baseUrl2 = '&imgSize=large&imgType=news&num=8&searchType=image';
     var searchEngineId = '&cx=008209479974289058794:qh7gjkn1zto';
-    var key = '&key=AIzaSyDc7c-QCQ-fS8LfGAbY169Js-czqPQtKPc';
+    var key = '&key=***';
     var city = req.query.city;
     var url = baseUrl1 + city + searchEngineId + baseUrl2 + key;
     console.log('custom url', url);
