@@ -1,0 +1,55 @@
+<div class="container col-sm-8" id="result_container" [hidden]= "!gotData && !dataReady">
+    <!-- hidden to "!gotData" -->
+    <tabset id="result_tab" #tabset>
+        <tab 
+            heading="Current" 
+            id="tab1"
+            class="container"
+        >
+            <div class="container-fluid">
+                <app-current></app-current>
+            </div>
+        </tab>
+        <tab 
+            heading="Hourly"
+        >
+            <div class="container-fluid">
+                <app-hourly></app-hourly>
+            </div>
+        </tab>
+        <tab 
+            heading="Weekly"
+        >
+            <div class="container-fluid">
+                <app-weekly></app-weekly>
+            </div>
+        </tab>
+    </tabset>
+    <div class="ButtonGroup">
+        <a href="https://twitter.com/intent/tweet?text=The%20current%20temperature%20at%20{{ city }}%20is%20{{ temperature }}+oF.%20The%20weather%20conditions%20are%20{{ summary }}.%20+%23CSCI571WeatherSearch" 
+            class="twitter-share-button" 
+            target="_blank"
+        >
+        <p
+            class="ButtonTwitter"
+        >
+        </p>
+        </a>
+            <p class="ButtonStar">
+                <i class="material-icons"
+                    [hidden]="!isFavorite"
+                    (click)="toggleStar(false);
+                            delFavorite()"
+                >
+                    star
+                </i>
+                <i class="material-icons"
+                    [hidden]="isFavorite"
+                    (click)="toggleStar(true);
+                            addFavorite()"
+                >
+                    star_border
+                </i>
+            </p>
+        </div>
+</div>

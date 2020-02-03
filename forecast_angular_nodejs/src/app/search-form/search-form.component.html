@@ -1,0 +1,235 @@
+<div class="container">
+<div 
+    class="container shadow p-3 mb-5 rounded col-sm-7"
+    id="form_container"
+>
+    <h2 
+        class="text-center" 
+        id="title"
+    >
+        Weather Search
+    </h2>
+    <div id="forms">
+    <form 
+        class="form-group"    
+        #inputForm="ngForm"
+        (ngSubmit)="onSubmit()"
+    >
+        <div class="form-group row">
+            <label 
+                for="streetInput" 
+                class="col-sm-2 col-form-label"
+            >
+                Street<span id="star">*</span>
+            </label>
+            <div class="col-sm-10">
+            <input 
+                type="text" 
+                class="form-control form-control-sm col-sm-7" 
+                id="street" 
+                required
+                [(ngModel)]="street"
+                name="streetInput"
+                #streetInput="ngModel"
+                placeholder="Enter Street Name"
+                [disabled]="currLoc==true"
+            >
+            <p 
+                [hidden]="streetInput.valid || streetInput.untouched || currLoc==true"
+                id="text_error_msg"
+            >
+                Please enter a street.
+            </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label
+                for="typeahead-config" 
+                class="col-sm-2 col-form-label"
+            >
+                City<span id="star">*</span>
+            </label>
+            <div class="col-sm-10">
+            <input 
+                type="text" 
+                class="form-control form-control-sm col-sm-7" 
+                id="typeahead-config" 
+                placeholder="Enter City Name"
+                required
+                [(ngModel)]="cityModel"
+                name="cityInput"
+                #cityInput="ngModel"
+                [disabled]="currLoc==true"
+                [ngbTypeahead]="search"
+            >
+            <p 
+                [hidden]="cityInput.valid || cityInput.untouched || currLoc==true"
+                id="text_error_msg"
+            >
+                Please enter a city.
+            </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label 
+                for="state" 
+                class="col-sm-2 col-form-label"
+            >
+                State<span id="star">*</span>
+            </label>
+            <div class="col-sm-4">
+            <select 
+                class="form-control form-control-sm"
+                id="state"
+                required
+                [(ngModel)]="state"
+                name="stateInput"
+                #stateInput="ngModel"
+                [disabled]="currLoc==true" 
+            >
+                <option 
+                    *ngFor="let state of stateOptions;" 
+                    [value]="state.id"
+                >
+                    {{state.name}}
+                </option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="currLoc"
+                    [(ngModel)]="currLoc"
+                    name="currLocInput"
+                    #currLocInput="ngModel"
+                >
+                <label 
+                    class="form-check-label" 
+                    for="currLoc"
+                >
+                    Current location
+                </label>
+            </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 row">
+                <button 
+                    id = "button_search_form"
+                    type="submit" 
+                    [disabled]="!inputForm.form.valid || stateInput.value == 'N/A'"
+                    [routerLink]="['result']"
+                >
+                    <i class="material-icons">search</i>
+                    Search
+                </button>
+                <button 
+                    id = "button_search_form"
+                    type ="button"
+                    (click)="inputForm.reset();clearForm();" 
+                >
+                    <i class="material-icons">clear_all</i>
+                    Clear
+                </button>
+            </div>
+        </div>
+    </form> 
+    </div>
+</div>
+<!-- <div class="container" id="bottom_buttons">
+    <div id="row">
+        <tabset type="pills">
+            <tab 
+                heading="result" 
+                id="result" 
+            >
+        
+                <app-result></app-result>
+            </tab>
+            <tab id="button"
+                heading="favorite"
+                id="favorite" 
+            >
+                <app-favorite></app-favorite>
+            </tab>
+        </tabset>
+    </div>
+</div> -->
+
+<!-- <ngb-tabset>
+    <ngb-tab title="Result">
+        <ng-template ngbTabContent>
+            <app-result></app-result>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Favorite">
+        <ng-template ngbTabContent>
+            <app-favorite></app-favorite>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset> -->
+
+<div class="container" id="bottom_buttons">
+    <div class="row" id="button_container">
+        <button 
+            id="btns"
+            [className]="(pathname === '/result') || (pathname === '/') ? 'activated' : 'notActivated'"
+            (click)="clickButton('result');onSubmit()"
+        >
+            Result
+        </button>
+        <button 
+            id="btns"
+            [className]="(pathname === '/favorite')? 'activated' : 'notActivated'"
+            (click)="clickButton('favorite')"
+        >
+            Favorite
+        </button>
+    </div>
+</div>
+
+
+ <div class="container col-sm-7">
+    <!--<div id="progress_container" 
+        [hidden]="!progressBar"
+        class="progress"
+    > -->
+    <div id="progress_container" [hidden]="!progressBar">
+    <p><ngb-progressbar type="info" [value]="50" [striped]="true"></ngb-progressbar></p></div>
+        <!-- <div 
+            class="progress-bar progress-bar-striped progress-bar-animated" 
+            role="progressbar" 
+            aria-valuenow="75" 
+            aria-valuemin="0" 
+            aria-valuemax="100" 
+            style="width: 50%; background-color: rgba(0, 107, 139, 0.897)"
+        >
+        </div> -->
+    <!-- </div>-->
+</div>  
+<div 
+    *ngIf="invalid_address"
+    class="container col-sm-8" 
+    id="invalid_address"
+>
+    <div class="alert alert-warning" role="alert">
+        Invalid Address.
+    </div>
+</div>
+
+<div 
+    *ngIf="no_record"
+    class="container col-sm-8" 
+    id="no_record"
+>
+    <div class="alert alert-warning" role="alert">
+        No Records.
+    </div>
+</div>  
+</div>
+
+<router-outlet></router-outlet>

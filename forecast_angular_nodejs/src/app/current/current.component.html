@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="col d-flex justify-content-center">
+    <div class="card" id="current_container" style="width: 500px;">
+        <div class="card-body">
+            <h3 id="city_container">{{city}}</h3>
+            <div class="row" id="curr_mid_row">
+                <div id="curr_mid_left">
+                    <h3 id="timezone_container">{{timezone}}</h3>
+                    <div class="row" id="temp_container">
+                        <h1 >{{temperature}}</h1>
+                        <img id= "degree" src={{degree}}>
+                        <h1>F</h1>
+                    </div>
+                    <h5 id="summary_container">{{summary}}</h5>
+                </div>
+                <div id="img_container">
+                    <img id="curr_mid_seal_img" src="{{seal}}"/>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between" id="curr_bottom_container">
+                <div 
+                    *ngIf="humidity > 0" 
+                    class="d-flex flex-column bd-highlight"
+                    tooltip="humidity"
+                    [adaptivePosition]="false"
+                    placement="top"
+                >
+                    <img id="curr_images" src={{humidityImage}}/>
+                    <span>{{humidity}}</span>
+                </div>    
+                <div 
+                    *ngIf="pressure > 0"
+                    class="d-flex flex-column bd-highlight"
+                    tooltip="pressure"
+                    [adaptivePosition]="false"
+                    placement="top"
+                >
+                    <img id="curr_images" src={{pressureImage}}/>
+                    <span>{{pressure}}</span>
+                </div>   
+                <div 
+                    *ngIf="windSpeed > 0"
+                    class="d-flex flex-column bd-highlight"
+                    tooltip="windSpeed"
+                    [adaptivePosition]="false"
+                    placement="top"
+                    >
+                    <img id="curr_images" src={{windSpeedImage}}/>
+                    <span>{{windSpeed}}</span>
+                </div>   
+                <div 
+                    *ngIf="cloudCover > 0" 
+                    class="d-flex flex-column bd-highlight"
+                    tooltip="cloudCover"
+                    [adaptivePosition]="false"
+                    placement="top"
+                >
+                    <img id="curr_images" src={{cloudCoverImage}}/>
+                    <span>{{cloudCover}}</span>
+                </div>   
+                <div 
+                    *ngIf="visibility > 0"
+                    class="d-flex flex-column bd-highlight"
+                    tooltip="visibility"
+                    [adaptivePosition]="false"
+                    placement="top"
+                >
+                    <img id="curr_images" src={{visibilityImage}}/>
+                    <span>{{visibility}}</span>
+                </div>   
+                <div 
+                    *ngIf="ozone > 0"
+                    class="d-flex flex-column bd-highlight"
+                    tooltip="ozone"
+                    [adaptivePosition]="false"
+                    placement="top"
+                >
+                    <img id="curr_images" src={{ozoneImage}}/>
+                    <span>{{ozone}}</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

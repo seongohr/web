@@ -1,0 +1,142 @@
+#current_container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: skyblue;
+    padding : 1.5rem;
+    /* width: 500px; */
+    border: 1px solid black;
+    border-radius : 5px;
+}
+
+#curr_mid_row {
+    margin: 0 0.005em 0 0.005em;
+}
+
+#curr_mid_left {
+    width: 70%;
+}
+
+#temp_container {
+    margin: 5% 0.005em 5% 0.005em;
+}
+
+#curr_images {
+    width: 2rem;
+    height: 2rem;
+}
+
+#degree {
+    width : 0.5rem;
+    height : 0.5rem;
+    /* margin : 0.2em 0.5em 0 0.5em; */
+}
+
+#img_container {
+    width: 30%;
+    height: 30%;
+}
+
+ #curr_mid_seal_img {
+    width: 100%;
+    height: 100%;
+}
+
+#curr_bottom_container {
+    margin-top: 5%; 
+}
+
+/* #city_container {
+    text-align: left;
+}
+
+#timezone_container {
+    text-align: left;
+}
+
+#summary_container {
+    text-align: left;
+}
+
+#city_container {
+    font-size: 1.6em;
+}
+*/
+#timezone_container {
+    color: rgb(65, 65, 65);
+} 
+
+html {
+    font-size: 1rem;
+    }
+h1 {
+font-size: 1.2rem;
+}
+h2 {
+font-size: 1.1rem;
+}
+h3 {
+font-size: 1.0rem;
+}
+h5 {
+font-size: 0.8rem;
+}
+
+ 
+ @media (min-width: 768px) {
+   html {
+     font-size: 1.1rem;
+   }
+   h1 {
+       font-size: 1.3rem;
+   }
+   h2 {
+       font-size: 1.2rem;
+   }
+   h3 {
+    font-size: 1.1rem;
+    }
+    h5 {
+        font-size: 0.9rem;
+    }
+    .card {
+        width: 100%;
+    }
+
+ }
+ 
+ @media (min-width: 991px) {
+    html {
+    font-size: 1.2rem;
+   }
+   h1 {
+       font-size: 1.5rem;
+   }
+   h2 {
+       font-size: 1.4rem;
+   }
+   h3 {
+       font-size: 1.3rem;
+   }
+    h5 {
+        font-size: 1.1rem;
+    }
+ }
+ 
+ @media (min-width: 1200px) {
+   html {
+     font-size: 1.2rem;
+   }
+   h1 {
+       font-size: 1.7rem;
+   }
+   h2 {
+       font-size: 1.6rem;
+   }
+   h3 {
+       font-size: 1.5rem;
+   }
+   h5 {
+       font-size: 1.3rem;
+   }
+ }
+ 

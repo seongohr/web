@@ -1,0 +1,86 @@
+#form_container {
+    margin-top: 2rem;
+    background-color: #5d9494;
+    color : white;
+    border: 1px solid black;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px 0px rgba(84,75,84,1);
+    margin-bottom: 27px;
+    padding: 31px 80px;
+}
+
+
+#star {
+    color: red;
+}
+
+#text_error_msg {
+    color: red;
+}
+
+button {
+    margin: 0.5%;
+}
+
+#invalid_address {
+    margin-top: 1%;
+}
+
+#button_search_form {
+    align-items: center;
+      color: gray;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 3px;
+      display: flex;
+      margin-right: 15px;
+      padding: 5px 10px;
+}
+
+#forms {
+    margin-left: 15%;
+}
+
+#street, #typeahead-config {
+    border : 1px solid black;
+}
+
+#button_container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#btns {
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-right: 20px;
+    padding: 5px 10px;
+}
+.notActivated {
+    color: gray;
+    /* border: 1px solid black;
+    border-radius: 2px;
+    margin-right: 20px;
+    padding: 5px 10px; */
+    background-color: white;
+}
+
+.activated{
+    /* border: 1px solid black;
+    border-radius: 2px;
+    margin-right: 20px;
+    padding: 5px 10px; */
+    background-color: #5d9494;
+    color: white;
+}
+
+#pills-tab {
+    align-items: center;
+    display: flex;
+  justify-content: center;
+}
+
+#progress_container {
+    margin-top: 5%;
+}

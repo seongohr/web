@@ -1,0 +1,58 @@
+<div 
+    class="container col-sm-7" 
+    id="favorite_container"
+    *ngIf="!no_data">
+    <table class="table_container" style="width: 100%">
+        <thead>
+            <tr id="tr_head">
+                <th scope="col" id="id" >#</th>
+                <th scope="col">Image</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Wish List</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let data of favoriteData;let odd = odd;" [ngClass]="odd? 'odd' : 'even'">
+                <th scope="row">
+                    <div id="id">{{data.id}}</div>
+                </th>
+                <th scope="row">
+                    <div id="seal">
+                        <img src="{{data.seal}}"/>
+                    </div>
+                </th>
+                <th scope="row">
+                    <div id="city">
+                        <a [routerLink]="['/result']"
+                        (click)="clickFavoriteCity(data.latitude, data.longitude, data.seal, data.city, data.state)">
+                            {{data.city}}
+                        </a>
+                    </div>
+                </th>
+                <th scope="row">
+                    <div id="state">{{data.state}}</div>
+                </th>                
+                <th scope="row">
+                    <div id="wish_list">
+                        <i 
+                            class="material-icons"
+                            (click)="deleteFavorite(data.city, data.state)"
+                        >delete</i>
+                    </div>
+                </th>
+            </tr>
+        </tbody>
+    </table> 
+</div>
+
+<div 
+    *ngIf="no_data"
+    class="container col-sm-8" 
+    id="no_data"
+>
+    <div class="alert alert-warning" role="alert">
+        No Records.
+    </div>
+</div>
+

@@ -1,0 +1,31 @@
+#favorite_container {
+    margin-top: 2%;
+}
+
+#seal > img{
+    width: 2em;
+    height: 2em;
+}
+
+.odd {
+    background-color: #5d9494;
+}
+
+.even {
+    background-color:  skyblue;
+}
+
+#tr_head {
+    background-color:  #5d9494;
+}
+
+#id {
+    padding-left: 50px;
+}
+
+i {
+    background-color: white;
+    color: rgb(240, 187, 12);
+}
+
+
