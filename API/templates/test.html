@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="post_request">
+            POST REQUEST
+        </div>
+        <form action="/get_data" method="post" id="post_form">
+            <label for="hid_post">hid:</label>
+            <input type="text" id="hid_post" name="hid_post"><br>
+            <input type="submit" value="Submit" id="post_submit">
+        </form><br>
+        <div id="post_result"></div><br>
+        <div id="get_request">
+            GET REQUEST
+        </div>
+        <form action="/get_data" method="get" id="get_form">
+            <label for="hid_get">hid:</label>
+            <input type="text" id="hid_get" name="hid_get"><br>
+            <input type="submit" value="Submit" id="get_submit">
+        </form><br>
+        <div id="print_data"></div>
+        <div id="get_result"></div><br>
+    </body>
+    <script>
+        $(document).ready(function(){
+            $("#post_form").on("submit", function(event) {
+                $.ajax({
+                    data :  {
+                        hid : $('#hid_post').val()
+                    },
+                    dataType: 'json',
+                    type: 'POST',
+                    url : '/get_data'
+                })
+                .done(function(data){
+                    $('#post_result').text(JSON.stringify(data)).show();
+                });
+                event.preventDefault();
+            });
+        });
+        $(document).ready(function(){
+            $("#get_form").on("submit", function(event) {
+                $.ajax({
+                    data :  {
+                        hid : $('#hid_get').val()
+                    },
+                    dataType: 'json',
+                    type: 'GET',
+                    url : '/get_data',
+                    dataType: 'json'
+                })
+                .done(function(data){
+                    $('#get_result').text(JSON.stringify(data)).show();
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
+</html>
